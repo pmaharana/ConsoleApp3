@@ -39,7 +39,7 @@ namespace ConsoleApp3
                 return "not pangram";
             }
         }
-            
+
 
 
 
@@ -50,7 +50,7 @@ namespace ConsoleApp3
             var rv = String.Empty;
             var upperVowel = new List<char> { 'A', 'E', 'I', 'O', 'U' };
             var lowerVowel = new List<char> { 'a', 'e', 'i', 'o', 'u' };
-            
+
 
             foreach (var letter in sentence)
             {
@@ -60,12 +60,12 @@ namespace ConsoleApp3
                 }
                 else if (char.IsUpper(letter) && !upperVowel.Contains(letter))
                 {
-                    
+
                     rv += "Iron";
                 }
                 else if (lowerVowel.Contains(letter))
                 {
-                    
+
                     rv += "Yard";
                 }
                 else
@@ -77,7 +77,7 @@ namespace ConsoleApp3
 
             return rv;
         }
-                    
+
 
 
 
@@ -104,7 +104,7 @@ namespace ConsoleApp3
             }
             else
             {
-                return false;    
+                return false;
             }
         }
 
@@ -132,9 +132,54 @@ namespace ConsoleApp3
             }
             return yugi;
         }
-                
 
+        //Solution for alphabet war code wars - https://www.codewars.com/kata/59377c53e66267c8f6000027/solutions/csharp
 
+        public static string AlphabetWar(string fight)
+        {
+            var leftDic = new Dictionary<char, int>();
+            var rightDic = new Dictionary<char, int>();
+            int leftValue = 0;
+            int rightValue = 0;
+
+            leftDic.Add('w', 4);
+            leftDic.Add('p', 3);
+            leftDic.Add('b', 2);
+            leftDic.Add('s', 1);
+
+            rightDic.Add('m', 4);
+            rightDic.Add('q', 3);
+            rightDic.Add('d', 2);
+            rightDic.Add('z', 1);
+
+            var fightu = fight.ToLower().ToList();
+
+            foreach (var letter in fightu)
+            {
+                if (leftDic.ContainsKey(letter))
+                {
+                    leftValue += leftDic[letter];
+                }
+                else if (rightDic.ContainsKey(letter))
+                {
+                    rightValue += rightDic[letter];
+                }
+            }
+
+            if (leftValue > rightValue)
+            {
+                return "Left side wins!";
+            }
+            else if (rightValue > leftValue)
+            {
+                return "Right side wins!";
+            }
+            else
+            {
+
+                return "Let's fight again!";
+            }
+        }
 
 
         static void Main(string[] args)
@@ -206,8 +251,9 @@ namespace ConsoleApp3
             //string hel = "two words";
             //Console.WriteLine(hel.Substring(0, 4) + hel.Substring(4, 1).ToUpper() + hel.Substring(4 + 1));
 
-            var rv = wave("two cord");
-            rv.ForEach(f => Console.WriteLine(f));
+            //var rv = wave("two cord");
+            //rv.ForEach(f => Console.WriteLine(f));
+
 
 
         }
