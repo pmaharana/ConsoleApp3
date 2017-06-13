@@ -182,6 +182,33 @@ namespace ConsoleApp3
         }
 
 
+        public static string SortTheInnerContent(string words)
+        {
+            var i = words.Split(' ').ToList();
+            var rv3 = new List<string>();
+
+            for (int z = 0; z < i.Count; z++)
+            {
+                if (i[z].Length < 2)
+                {
+                    rv3.Add(i[z]);
+                }
+                else
+                {
+                    string rv = "";
+                    i[z].Substring(1, i[z].Length - 2).ToList().OrderByDescending(o => o).ToList().
+                        ForEach(x => rv += x.ToString());
+
+                    string rv2 = i[z].Substring(0, 1) + rv + i[z].Substring(i[z].Length - 1);
+                    rv3.Add(rv2);
+                }
+               
+            }
+            string rv4 = String.Join(" ", rv3);
+            return rv4;
+        }
+
+
         static void Main(string[] args)
         {
 
@@ -255,6 +282,27 @@ namespace ConsoleApp3
             //rv.ForEach(f => Console.WriteLine(f));
 
 
+            //string qv = "lettha me testu thisu";
+            //var i = qv.Split(' ').ToList();
+            //var rv3 = new List<string>();
+
+            //for (int z = 0; z < i.Count; z++)
+            //{
+            //    string rv = "";
+            //    i[z].Substring(1, i[z].Length - 2).Reverse().ToList().ForEach(x => rv += x.ToString());
+            //    string rv2 = i[z].Substring(0, 1) + rv + i[z].Substring(i[z].Length - 1);
+            //    rv3.Add(rv2);
+            //}
+            //string rv4 = String.Join(" ", rv3);
+
+            //Console.WriteLine(rv4);
+
+            //string trydis = "inner";
+            //var lmao = "";
+            //trydis.ToList().OrderByDescending(o => o).ToList().ForEach(x => lmao += x);
+            //Console.WriteLine(lmao);
+
+            Console.WriteLine(SortTheInnerContent("apackckc a fsnsfsf"));
 
         }
     }
